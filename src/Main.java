@@ -5,12 +5,13 @@ import java.util.Scanner;
 public class Main {
 
 	public static Scanner scnr = new Scanner(System.in);
+	static boolean currentlyPlaying = true;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
+		while (currentlyPlaying) {
 		// make and shuffle the deck
-
 		ArrayList<Card> deck = Deck.createDeck();
 
 		// create and deal the hands
@@ -52,6 +53,13 @@ public class Main {
 		}
 		
 		
+		winCondition(dealer, player);
+		playAgain();
+
+		}
+	}
+	
+	public static void winCondition(Hand dealer, Hand player) {
 		if (dealer.sumOfCardVal(dealer.getCards()) > player.sumOfCardVal(player.getCards())) {
 			System.out.println(dealer.toString());
 			System.out.println(player.toString());
@@ -65,7 +73,16 @@ public class Main {
 			System.out.println(player.toString());
 			System.out.println("Push!");
 		}
-
+	}
+	
+	public static void playAgain() {
+		System.out.println("Another hand?");
+		String playAgain = scnr.nextLine();
+		if (playAgain.toLowerCase().contains("y")){
+			currentlyPlaying = true;
+		} else {
+			currentlyPlaying = false;
+		}
 	}
 
 }
