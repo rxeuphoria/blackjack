@@ -11,8 +11,10 @@ public class Hand {
 		this.cards = cards;
 	}
 
-	public Hand() {
-
+	public Hand(boolean dealer) {
+		super();
+		this.dealer = dealer;
+		ArrayList<Card> cards = new ArrayList<Card>();
 	}
 
 	public void dealCard(Card card, ArrayList<Card> deck) {
